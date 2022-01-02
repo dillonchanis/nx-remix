@@ -1,5 +1,85 @@
+# NX + Remix
 
+This is an example project that utilizes NX, Remix, Tailwind, and Storybook.
 
+## Getting Started
+
+Install the dependencies:
+
+```bash
+npm i
+```
+
+### Run the App
+
+To run the Remix application named `demo`:
+
+```bash
+npx nx dev demo
+```
+
+### Run Storybook
+
+A fake `ui` library was generated with this project that has a Button component. To view the Storybook page run:
+
+```
+npx nx storybook ui
+```
+
+## Adding new routes
+
+```bash
+npx nx g route
+
+# e.g.
+npx nx g route foo/bar --project=demo
+```
+
+## Workspace libraries
+
+The Remix setup leverages npm/yarn/pnpm workspaces and Nx buildable libraries.
+
+```bash
+npx nx g @nrwl/remix:lib mylib
+```
+
+Import the new library in your app.
+
+```javascript
+// apps/demo/app/root.tsx
+import { Mylib } from '@acme/mylib';
+
+// ...
+
+export default function App() {
+  return (
+    <Document>
+      <Layout>
+        <Mylib />
+        <Outlet />
+      </Layout>
+    </Document>
+  );
+}
+```
+
+Now, run the dev server again to see the new library in action.
+
+**Note:** You must restart the server if you make any changes to your library. Luckily, with Nx cache this operation should be super fast.
+
+## Running unit tests
+
+```
+nx test remix
+```
+
+## Publishing
+
+```
+nx publish remix --ver=[version]
+```
+
+---
 # Acme
 
 This project was generated using [Nx](https://nx.dev).
