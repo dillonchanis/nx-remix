@@ -9,19 +9,13 @@ import {
   useCatch,
 } from 'remix';
 import type { LinksFunction } from 'remix';
+import styles from "./tailwind.css";
 
-import globalStylesUrl from '~/styles/global.css';
-import darkStylesUrl from '~/styles/dark.css';
 
 // https://remix.run/api/app#links
 export let links: LinksFunction = () => {
   return [
-    { rel: 'stylesheet', href: globalStylesUrl },
-    {
-      rel: 'stylesheet',
-      href: darkStylesUrl,
-      media: '(prefers-color-scheme: dark)',
-    },
+    { rel: 'stylesheet', href: styles },
   ];
 };
 
@@ -121,25 +115,12 @@ function Document({
 
 function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="remix-app">
+    <div className="max-w-5xl mx-auto">
       <header className="remix-app__header">
         <div className="container remix-app__header-content">
           <Link to="/" title="Remix" className="remix-app__header-home-link">
             <RemixLogo />
           </Link>
-          <nav aria-label="Main navigation" className="remix-app__header-nav">
-            <ul>
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <a href="https://remix.run/docs">Remix Docs</a>
-              </li>
-              <li>
-                <a href="https://github.com/remix-run/remix">GitHub</a>
-              </li>
-            </ul>
-          </nav>
         </div>
       </header>
       <div className="remix-app__main">

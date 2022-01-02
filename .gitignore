@@ -41,4 +41,6 @@ Thumbs.db
 # Remix files
 apps/**/build
 apps/**/.cache
-  
+
+# Tailwind / Remix App files
+apps/demo/app/tailwind.css

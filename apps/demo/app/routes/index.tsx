@@ -1,5 +1,6 @@
 import type { MetaFunction, LoaderFunction } from 'remix';
 import { useLoaderData, json, Link } from 'remix';
+import { Button } from "@acme/ui";
 
 type IndexData = {
   resources: Array<{ name: string; url: string }>;
@@ -59,7 +60,7 @@ export default function Index() {
   let data = useLoaderData<IndexData>();
 
   return (
-    <div className="remix__page">
+    <div>
       <main>
         <h2>Welcome to Remix!</h2>
         <p>We're stoked that you're here. 🥳</p>
@@ -74,27 +75,8 @@ export default function Index() {
           <code>app/routes/demos</code> and <code>app/styles/demos</code>{' '}
           folders when you're ready to turn this into your next project.
         </p>
+        <Button>My UI Button</Button>
       </main>
-      <aside>
-        <h2>Demos In This App</h2>
-        <ul>
-          {data.demos.map((demo) => (
-            <li key={demo.to} className="remix__page__resource">
-              <Link to={demo.to} prefetch="intent">
-                {demo.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-        <h2>Resources</h2>
-        <ul>
-          {data.resources.map((resource) => (
-            <li key={resource.url} className="remix__page__resource">
-              <a href={resource.url}>{resource.name}</a>
-            </li>
-          ))}
-        </ul>
-      </aside>
     </div>
   );
 }
